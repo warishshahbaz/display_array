@@ -4,35 +4,32 @@ const API_ENDPOINT_2 = "https://dummyjson.com/products";
 const API_ENDPOINT_3 = " https://dummyjson.com/todos";
 
 // Simulated fetch function
-function fetchData(url) {
+function fetchData(url, time) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Simulated API response
       const data = { message: `Data from ${url}` };
       console.log(`Fetched data from ${url}:`, data);
-      // Display data in UI
       const element = document.createElement("div");
       element.textContent = data.message;
       document.body.appendChild(element);
-      // Resolve the promise
       resolve(true);
-    }, Math.floor(Math.random() * 3000) + 1000); // Random timeout between 1000ms and 4000ms
+    }, time);
   });
 }
 
 // Function to fetch data from API endpoint 1
 function PromiseAPI1() {
-  return fetchData(API_ENDPOINT_1);
+  return fetchData(API_ENDPOINT_1, 1000);
 }
 
 // Function to fetch data from API endpoint 2
 function PromiseAPI2() {
-  return fetchData(API_ENDPOINT_2);
+  return fetchData(API_ENDPOINT_2, 2000);
 }
 
 // Function to fetch data from API endpoint 3
 function PromiseAPI3() {
-  return fetchData(API_ENDPOINT_3);
+  return fetchData(API_ENDPOINT_3, 3000);
 }
 
 // Function to start the promise chain
